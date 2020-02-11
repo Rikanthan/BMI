@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'card_contents.dart';
+import 'newcard.dart';
+
 const BottomBarHeight=80.0;
 const cardColor=Color(0xFF1D1E33);
 
@@ -23,11 +27,11 @@ class _InputState extends State<Input> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: newcard(colour: cardColor),
+                  child: cardicon(ic: FontAwesomeIcons.mars,tex:'Male'),
 
                 ),
                 Expanded(
-                  child: newcard(colour: cardColor),
+                  child: cardicon(ic: FontAwesomeIcons.venus,tex:'Female'),
 
                 )
               ],
@@ -64,10 +68,20 @@ class _InputState extends State<Input> {
 
           ),
           Container(
+
             color: Color(0xFF041D62),
             margin:EdgeInsets.only(top: 10.0),
             height: BottomBarHeight,
             width: double.infinity,
+            child: Center(
+              child: Text(
+                'CALCULATE',
+                style:TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                ) ,
+              ),
+            ),
           ),
 
         ],
@@ -78,19 +92,4 @@ class _InputState extends State<Input> {
   }
 }
 
-class newcard extends StatelessWidget {
-  newcard({this.colour});
-  Color colour;
 
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-        color: colour,
-        borderRadius: BorderRadius.circular(15.0),
-      ),
-    );
-  }
-}

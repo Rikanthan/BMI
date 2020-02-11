@@ -4,7 +4,7 @@ import 'input.dart';
 
 const labletext=TextStyle(
 fontSize: 20.0,
-color: Colors.white,
+color: Colors.grey,
 );
 class cardicon extends StatelessWidget {
   cardicon({@required this.ic,this.tex});

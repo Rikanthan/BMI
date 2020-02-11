@@ -4,7 +4,8 @@ import 'card_contents.dart';
 import 'newcard.dart';
 
 const BottomBarHeight=80.0;
-const cardColor=Color(0xFF1D1E33);
+const cardColor =Color(0xFF1D1E33);
+const inactivecardcolor =Color(0xFF111329);
 
 class Input extends StatefulWidget {
   @override
@@ -13,6 +14,43 @@ class Input extends StatefulWidget {
 
 class _InputState extends State<Input> {
   @override
+
+  Color malecardcolor=inactivecardcolor;
+  Color femalecardcolor=inactivecardcolor;
+
+  void updatecolor(int gender)
+  {
+    if(gender==1)
+      {
+        if(malecardcolor==inactivecardcolor)
+          {
+            malecardcolor=cardColor;
+            femalecardcolor=inactivecardcolor;
+          }
+        else
+        {
+          malecardcolor=inactivecardcolor;
+        }
+
+      }
+    else if(gender==2)
+    {
+      if(malecardcolor==inactivecardcolor)
+      {
+        malecardcolor=cardColor;
+        femalecardcolor=inactivecardcolor;
+      }
+      else
+      {
+        malecardcolor=inactivecardcolor;
+      }
+
+    }
+
+
+  }
+
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -27,11 +65,28 @@ class _InputState extends State<Input> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: cardicon(ic: FontAwesomeIcons.mars,tex:'Male'),
+                  child:GestureDetector
+               (
+                    onTap: (){
+                      setState(() {
+                        updatecolor(1);
+                        print('male');
+                      });
+                    },
+
+                    child: cardicon(ic: FontAwesomeIcons.mars,tex:'Male')),
 
                 ),
                 Expanded(
-                  child: cardicon(ic: FontAwesomeIcons.venus,tex:'Female'),
+                  child: GestureDetector
+                    (
+                      onTap: (){
+                        setState(() {
+                          updatecolor(2);
+                          print('female');
+                        });
+                      },
+                      child: cardicon(ic: FontAwesomeIcons.venus,tex:'Female')),
 
                 )
               ],
@@ -44,7 +99,17 @@ class _InputState extends State<Input> {
               (
               children: <Widget>[
                 Expanded(
-                  child: newcard(colour: cardColor),
+                  child: GestureDetector
+                    (
+                      onTap: (){
+                        setState(() {
+
+                          print('middle');
+                        });
+                      },
+
+
+                    child: newcard(colour: cardColor)),
 
                 ),
 

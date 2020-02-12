@@ -21,8 +21,7 @@ class Input extends StatefulWidget {
 class _InputState extends State<Input> {
   @override
 
-  Color malecardcolor=inactivecardcolor;
-  Color femalecardcolor=inactivecardcolor;
+
 
   Gender selectedGender;
 
@@ -41,36 +40,27 @@ class _InputState extends State<Input> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child:GestureDetector
-               (
-                    onTap: (){
+                  child:newcard(
+                    onPress: () {
                       setState(() {
                         selectedGender=Gender.male;
-                        print('male');
                       });
                     },
-
-                    child:newcard(
-                      colour: selectedGender==Gender.male ? cardColor : inactivecardcolor,cardchild: cardicon(ic: FontAwesomeIcons.mars,tex:'Male'),
-                    ),
+                    colour: selectedGender==Gender.male ? cardColor : inactivecardcolor,cardchild: cardicon(ic: FontAwesomeIcons.mars,tex:'Male'),
                   ),
 
                 ),
                 Expanded(
-                  child: GestureDetector
-                    (
-                      onTap: (){
-                        setState(() {
-                          selectedGender=Gender.female;
-                          print('female');
-                        });
-                      },
-                      child:newcard(
-                      colour: selectedGender==Gender.female ? cardColor : inactivecardcolor
-                          ,cardchild:cardicon(ic: FontAwesomeIcons.venus,tex:'Female'
-                      )
-                           ),
-                      ),
+                  child: newcard(
+                    onPress: () {
+                      setState(() {
+                        selectedGender=Gender.female;
+                      });
+                    },
+                  colour: selectedGender==Gender.female ? cardColor : inactivecardcolor
+                      ,cardchild:cardicon(ic: FontAwesomeIcons.venus,tex:'Female'
+                  )
+                       ),
 
                 )
               ],

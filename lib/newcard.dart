@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 
 class newcard extends StatelessWidget {
-  newcard({this.colour,this.cardchild});
+  newcard({this.colour,this.cardchild,this.onPress});
   final Color colour;
   final Widget cardchild;
+  final Function onPress;
 
 
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: cardchild,
-      margin: EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-        color: colour,
+    return GestureDetector(
+      onTap: onPress,
+      child: Container(
+        child: cardchild,
+        margin: EdgeInsets.all(10.0),
+        decoration: BoxDecoration(
+          color: colour,
 
 
-        borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(15.0),
+        ),
       ),
     );
   }

@@ -7,6 +7,12 @@ const BottomBarHeight=80.0;
 const cardColor =Color(0xFF1D1E33);
 const inactivecardcolor =Color(0xFF111329);
 
+enum Gender
+{
+  male,
+  female
+}
+
 class Input extends StatefulWidget {
   @override
   _InputState createState() => _InputState();
@@ -18,13 +24,13 @@ class _InputState extends State<Input> {
   Color malecardcolor=inactivecardcolor;
   Color femalecardcolor=inactivecardcolor;
 
-  void updatecolor(int gender)
+  void updatecolor(Gender SelectedGender)
   {
-    if(gender==1)
+    if(SelectedGender==Gender.male)
       {
         if(malecardcolor==inactivecardcolor)
           {
-            malecardcolor=cardColor;
+            malecardcolor=cardColor;//active color
             femalecardcolor=inactivecardcolor;
           }
         else
@@ -33,16 +39,16 @@ class _InputState extends State<Input> {
         }
 
       }
-    else if(gender==2)
+    else if(SelectedGender==Gender.female)
     {
-      if(malecardcolor==inactivecardcolor)
+      if(femalecardcolor==inactivecardcolor)
       {
-        malecardcolor=cardColor;
-        femalecardcolor=inactivecardcolor;
+        femalecardcolor=cardColor;//activecolor
+        malecardcolor=inactivecardcolor;
       }
       else
       {
-        malecardcolor=inactivecardcolor;
+        femalecardcolor=inactivecardcolor;
       }
 
     }
@@ -69,12 +75,15 @@ class _InputState extends State<Input> {
                (
                     onTap: (){
                       setState(() {
-                        updatecolor(1);
+                        updatecolor(Gender.male);
                         print('male');
                       });
                     },
 
-                    child: cardicon(ic: FontAwesomeIcons.mars,tex:'Male')),
+                    child:newcard(
+                      colour: malecardcolor,cardchild: cardicon(ic: FontAwesomeIcons.mars,tex:'Male'),
+                    ),
+                  ),
 
                 ),
                 Expanded(
@@ -82,11 +91,15 @@ class _InputState extends State<Input> {
                     (
                       onTap: (){
                         setState(() {
-                          updatecolor(2);
+                          updatecolor(Gender.female);
                           print('female');
                         });
                       },
-                      child: cardicon(ic: FontAwesomeIcons.venus,tex:'Female')),
+                      child:newcard(
+                      colour: femalecardcolor,cardchild:cardicon(ic: FontAwesomeIcons.venus,tex:'Female'
+                      )
+                           ),
+                      ),
 
                 )
               ],

@@ -11,6 +11,7 @@ class cardicon extends StatelessWidget {
   final IconData ic;
   final String tex;
 
+
   @override
   Widget build(BuildContext context) {
     return newcard(colour: cardColor,

@@ -24,37 +24,7 @@ class _InputState extends State<Input> {
   Color malecardcolor=inactivecardcolor;
   Color femalecardcolor=inactivecardcolor;
 
-  void updatecolor(Gender SelectedGender)
-  {
-    if(SelectedGender==Gender.male)
-      {
-        if(malecardcolor==inactivecardcolor)
-          {
-            malecardcolor=cardColor;//active color
-            femalecardcolor=inactivecardcolor;
-          }
-        else
-        {
-          malecardcolor=inactivecardcolor;
-        }
-
-      }
-    else if(SelectedGender==Gender.female)
-    {
-      if(femalecardcolor==inactivecardcolor)
-      {
-        femalecardcolor=cardColor;//activecolor
-        malecardcolor=inactivecardcolor;
-      }
-      else
-      {
-        femalecardcolor=inactivecardcolor;
-      }
-
-    }
-
-
-  }
+  Gender selectedGender;
 
 
   Widget build(BuildContext context) {
@@ -75,13 +45,13 @@ class _InputState extends State<Input> {
                (
                     onTap: (){
                       setState(() {
-                        updatecolor(Gender.male);
+                        selectedGender=Gender.male;
                         print('male');
                       });
                     },
 
                     child:newcard(
-                      colour: malecardcolor,cardchild: cardicon(ic: FontAwesomeIcons.mars,tex:'Male'),
+                      colour: selectedGender==Gender.male ? cardColor : inactivecardcolor,cardchild: cardicon(ic: FontAwesomeIcons.mars,tex:'Male'),
                     ),
                   ),
 
@@ -91,12 +61,13 @@ class _InputState extends State<Input> {
                     (
                       onTap: (){
                         setState(() {
-                          updatecolor(Gender.female);
+                          selectedGender=Gender.female;
                           print('female');
                         });
                       },
                       child:newcard(
-                      colour: femalecardcolor,cardchild:cardicon(ic: FontAwesomeIcons.venus,tex:'Female'
+                      colour: selectedGender==Gender.female ? cardColor : inactivecardcolor
+                          ,cardchild:cardicon(ic: FontAwesomeIcons.venus,tex:'Female'
                       )
                            ),
                       ),

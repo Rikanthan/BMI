@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'card_contents.dart';
 import 'newcard.dart';
+import 'constants.dart';
 
-const BottomBarHeight=80.0;
-const cardColor =Color(0xFF1D1E33);
-const inactivecardcolor =Color(0xFF111329);
+
 
 enum Gender
 {
@@ -46,7 +45,7 @@ class _InputState extends State<Input> {
                         selectedGender=Gender.male;
                       });
                     },
-                    colour: selectedGender==Gender.male ? cardColor : inactivecardcolor,cardchild: cardicon(ic: FontAwesomeIcons.mars,tex:'Male'),
+                    colour: selectedGender==Gender.male ? kcardColor : kInactivecardcolor,cardchild: cardicon(ic: FontAwesomeIcons.mars,tex:'Male'),
                   ),
 
                 ),
@@ -57,7 +56,7 @@ class _InputState extends State<Input> {
                         selectedGender=Gender.female;
                       });
                     },
-                  colour: selectedGender==Gender.female ? cardColor : inactivecardcolor
+                  colour: selectedGender==Gender.female ? kcardColor : kInactivecardcolor
                       ,cardchild:cardicon(ic: FontAwesomeIcons.venus,tex:'Female'
                   )
                        ),
@@ -73,17 +72,34 @@ class _InputState extends State<Input> {
               (
               children: <Widget>[
                 Expanded(
-                  child: GestureDetector
-                    (
-                      onTap: (){
-                        setState(() {
+                  child: newcard(colour: kcardColor,
+                      cardchild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          Center(
+                            child: Text(
+                              'HEIGHT',
+                              style: kLabeltext,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: <Widget>[
+                              Text(
+                                '150',
+                                style: kNumbertext,
+                              ),
+                              Text(
+                                'cm',
+                              )
+                            ],
+                          )
+                        ],
 
-                          print('middle');
-                        });
-                      },
-
-
-                    child: newcard(colour: cardColor)),
+                  )),
 
                 ),
 
@@ -95,11 +111,11 @@ class _InputState extends State<Input> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                    child: newcard(colour: cardColor),
+                    child: newcard(colour: kcardColor),
 
                 ),
                 Expanded(
-                  child: newcard(colour: cardColor),
+                  child: newcard(colour: kcardColor),
                        ),
               ],
 
@@ -110,7 +126,7 @@ class _InputState extends State<Input> {
 
             color: Color(0xFF041D62),
             margin:EdgeInsets.only(top: 10.0),
-            height: BottomBarHeight,
+            height: kBottomBarHeight,
             width: double.infinity,
             child: Center(
               child: Text(

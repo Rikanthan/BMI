@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'newcard.dart';
 import 'input.dart';
+import 'constants.dart';
 
-const labletext=TextStyle(
-fontSize: 20.0,
-color: Colors.grey,
-);
+
+
+
+
 class cardicon extends StatelessWidget {
   cardicon({@required this.ic,this.tex});
   final IconData ic;
@@ -14,7 +15,7 @@ class cardicon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return newcard(colour: cardColor,
+    return newcard(colour: kcardColor,
       cardchild: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -28,7 +29,7 @@ class cardicon extends StatelessWidget {
           ),
           Text(
             tex,
-              style: labletext,
+              style:kLabeltext
           )
 
 

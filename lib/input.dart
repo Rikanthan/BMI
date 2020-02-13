@@ -23,7 +23,7 @@ class _InputState extends State<Input> {
 
 
   Gender selectedGender;
-
+  int height=150;
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,17 +89,48 @@ class _InputState extends State<Input> {
                             textBaseline: TextBaseline.alphabetic,
                             children: <Widget>[
                               Text(
-                                '150',
+                                height.toString(),
                                 style: kNumbertext,
                               ),
                               Text(
                                 'cm',
                               )
                             ],
-                          )
+                          ),
+                          SliderTheme(
+                            data: SliderTheme.of(context).copyWith(
+                              inactiveTrackColor: Colors.blueGrey,
+                              activeTrackColor: Colors.white70,
+                              thumbColor: Color(0xFF041D62),
+                              overlayColor: Color(0x29041D62),
+                              thumbShape: RoundSliderThumbShape(enabledThumbRadius: 18.0),
+                              overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
+
+
+
+
+
+
+                            ),
+                            child: Slider(
+                              value: height.toDouble(),
+                              min: 120.0,
+                              max: 220.0,
+
+                              onChanged: (double newHeight){
+                                setState(() {
+                                  height=newHeight.round();
+                                });
+
+                              },
+
+                            ),
+                          ),
                         ],
 
-                  )),
+
+                      )
+                  ),
 
                 ),
 

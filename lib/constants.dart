@@ -8,8 +8,9 @@ const kLabeltext=TextStyle
 
 const kNumbertext=TextStyle
   (
-  color: Colors.grey,
-  fontSize: 40.0,
+  color: Colors.white,
+  fontSize: 50.0,
+  fontWeight: FontWeight.bold,
 );
 
 const kBottomBarHeight=80.0;

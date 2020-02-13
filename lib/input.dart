@@ -24,6 +24,8 @@ class _InputState extends State<Input> {
 
   Gender selectedGender;
   int height=150;
+  int weight=60;
+  int age=23;
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,11 +108,6 @@ class _InputState extends State<Input> {
                               thumbShape: RoundSliderThumbShape(enabledThumbRadius: 18.0),
                               overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
 
-
-
-
-
-
                             ),
                             child: Slider(
                               value: height.toDouble(),
@@ -142,11 +139,84 @@ class _InputState extends State<Input> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                    child: newcard(colour: kcardColor),
+                    child: newcard(colour: kcardColor,
+                    cardchild: Column(
+                        children: <Widget>[
+                          Text(
+                            'WEIGHT',
+                                style: kLabeltext,
+                          ),
+                          Text(
+                            weight.toString(),
+                            style: kNumbertext,
+                          ),
+                          Row(
+                            mainAxisAlignment:MainAxisAlignment.center,
+                            children: <Widget>[
+                              RoundIconButton(icon:FontAwesomeIcons.plus ,
+                                action: (){
+                                setState(() {
+                                  weight++;
+                                });
+                                } ,),
+                              SizedBox(
+                                width: 10.0,
+
+                              ),
+                              RoundIconButton(icon: FontAwesomeIcons.minus,
+                                action: (){
+                                setState(() {
+                                  weight--;
+                                });
+
+                                } ,)
+                            ],
+                          )
+
+                        ],
+
+
+                      ),),
 
                 ),
                 Expanded(
-                  child: newcard(colour: kcardColor),
+                  child: newcard(colour: kcardColor,
+                  cardchild: Column(
+                    children: <Widget>[
+                      Text(
+                        'AGE',
+                        style: kLabeltext,
+                      ),
+                      Text(
+                        age.toString(),
+                        style: kNumbertext,
+                      ),
+                      Row(
+                        mainAxisAlignment:MainAxisAlignment.center,
+                        children: <Widget>[
+                          RoundIconButton(icon:FontAwesomeIcons.plus ,action: (){
+                            setState(() {
+                              age++;
+                            });
+                          },),
+                          SizedBox(
+                            width: 10.0,
+
+                          ),
+                          RoundIconButton(icon: FontAwesomeIcons.minus,
+                          action: (){
+                            setState(() {
+                              age--;
+                            });
+                          },)
+                        ],
+                      )
+
+                    ],
+
+
+                  )
+                    ,),
                        ),
               ],
 

@@ -4,9 +4,10 @@ import 'constants.dart';
 import 'newcard.dart';
 import 'input.dart';
 
+
 class Resultspage extends StatelessWidget {
 
-  Resultspage({this.txt,this.bm,this.g});
+  Resultspage({@required this.txt,@required this.bm,@required this.g});
 
   final String txt;
   final String bm;
@@ -38,7 +39,7 @@ class Resultspage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    txt,style: KResulttext,
+                    txt.toUpperCase(),style: KResulttext,
                   ),
                   Text(
                     bm,style: KBMItext,

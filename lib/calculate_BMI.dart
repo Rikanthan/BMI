@@ -2,30 +2,30 @@ import 'dart:math';
 
 class Finalresults
 {
-  Finalresults({this.weight,this.height});
+  Finalresults({this.height,this.weight});
   final int height;
   final int weight;
   double _bmi;
   String CalculateBMI()
   {
-     _bmi=weight / pow(height/100, 2);
+     _bmi=weight / pow(height /100, 2);
     return _bmi.toStringAsFixed(1);
 
   }
   String Results()
   {
-    if(_bmi > 25)
+    if(_bmi >= 25.0)
       {
         return 'Overweight';
       }
-   else if(_bmi < 18.5)
+   else if(_bmi  > 18.5)
     {
-      return 'Underweight';
+      return 'Normal';
 
     }
    else
      {
-       return 'Normal';
+       return 'Underweight';
      }
   }
 
@@ -33,18 +33,18 @@ class Finalresults
 
   String guidance()
   {
-    if(_bmi>=25)
+    if(_bmi> 25)
     {
       return 'You Should exercise more';
     }
-    else if(_bmi< 18.5)
+    else if(_bmi > 18.5)
     {
-      return 'You Should eat more';
+      return 'You have normal weight';
 
     }
     else
     {
-      return 'You have normal weight';
+      return 'You Should eat more';
     }
   }
 

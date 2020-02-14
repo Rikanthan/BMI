@@ -231,7 +231,8 @@ class _InputState extends State<Input> {
 
 
 
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> Resultspage(txt: calc.Results(),bm: calc.CalculateBMI(),g:calc.guidance()) ));
+            print(calc.CalculateBMI());
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> Resultspage(txt: calc.Results(),bm: calc.CalculateBMI(),g: calc.guidance(),) ));
           } ,),
 
         ],

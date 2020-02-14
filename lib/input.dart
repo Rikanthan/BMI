@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'card_contents.dart';
 import 'newcard.dart';
 import 'constants.dart';
+import 'results_page.dart';
+import 'calculate_BMI.dart';
 
 
 
@@ -153,20 +155,20 @@ class _InputState extends State<Input> {
                           Row(
                             mainAxisAlignment:MainAxisAlignment.center,
                             children: <Widget>[
-                              RoundIconButton(icon:FontAwesomeIcons.plus ,
+                              RoundIconButton(icon:FontAwesomeIcons.minus ,
                                 action: (){
                                 setState(() {
-                                  weight++;
+                                  weight--;
                                 });
                                 } ,),
                               SizedBox(
                                 width: 10.0,
 
                               ),
-                              RoundIconButton(icon: FontAwesomeIcons.minus,
+                              RoundIconButton(icon: FontAwesomeIcons.plus,
                                 action: (){
                                 setState(() {
-                                  weight--;
+                                  weight++;
                                 });
 
                                 } ,)
@@ -194,19 +196,19 @@ class _InputState extends State<Input> {
                       Row(
                         mainAxisAlignment:MainAxisAlignment.center,
                         children: <Widget>[
-                          RoundIconButton(icon:FontAwesomeIcons.plus ,action: (){
+                          RoundIconButton(icon:FontAwesomeIcons.minus ,action: (){
                             setState(() {
-                              age++;
+                              age--;
                             });
                           },),
                           SizedBox(
                             width: 10.0,
 
                           ),
-                          RoundIconButton(icon: FontAwesomeIcons.minus,
+                          RoundIconButton(icon: FontAwesomeIcons.plus,
                           action: (){
                             setState(() {
-                              age--;
+                              age++;
                             });
                           },)
                         ],
@@ -223,22 +225,14 @@ class _InputState extends State<Input> {
             ),
 
           ),
-          Container(
+          bottombutton(text:'CALCULATE',onpress:(){
 
-            color: Color(0xFF041D62),
-            margin:EdgeInsets.only(top: 10.0),
-            height: kBottomBarHeight,
-            width: double.infinity,
-            child: Center(
-              child: Text(
-                'CALCULATE',
-                style:TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                ) ,
-              ),
-            ),
-          ),
+            Finalresults calc=Finalresults(height: height,weight: weight);
+
+
+
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> Resultspage(txt: calc.Results(),bm: calc.CalculateBMI(),g:calc.guidance()) ));
+          } ,),
 
         ],
       ),
@@ -247,5 +241,7 @@ class _InputState extends State<Input> {
     );
   }
 }
+
+
 
 
